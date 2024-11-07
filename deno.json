@@ -1,10 +1,19 @@
 {
+  "imports": {
+    "home-assistant/types": "http://localhost:8000/src/types.ts",
+    "home-assistant/data/lovelace/config/card": "http://localhost:8000/src/data/lovelace/config/card.ts",
+    "home-assistant/panels/lovelace/types": "http://localhost:8000/src/panels/lovelace/types.ts",
+    // annoying transitive dependencies of home-assistant modules
+    "home-assistant-js-websocket": "npm:home-assistant-js-websocket",
+    "memoize-one": "npm:memoize-one",
+  },
   "tasks": {
-    "build": "deno run -R -E --allow-run=node_modules/.deno/@esbuild+linux-x64@0.24.0/node_modules/@esbuild/linux-x64/bin/esbuild build.ts",
+    "proxy": "deno run --allow-net proxy.ts",
+    "lint": "deno check --allow-import . && deno lint .",
+    "build": "deno run -R -E --allow-run build.ts",
     "d": "deno task build && scp dist/out.js slime-lan:.config/home-assistant/www/develop/"
   },
   "nodeModulesDir": "auto",
-  "imports": { "lit": "npm:lit" },
   "lint": {
     "exclude": ["dist"]
   }
