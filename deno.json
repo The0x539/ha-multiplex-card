@@ -3,6 +3,9 @@
     "build": "deno run -R -E --allow-run=node_modules/.deno/@esbuild+linux-x64@0.24.0/node_modules/@esbuild/linux-x64/bin/esbuild build.ts",
     "d": "deno task build && scp dist/out.js slime-lan:.config/home-assistant/www/develop/"
   },
-  "nodeModulesDir": "manual",
-  "imports": { "lit": "npm:lit" }
+  "nodeModulesDir": "auto",
+  "imports": { "lit": "npm:lit" },
+  "lint": {
+    "exclude": ["dist"]
+  }
 }

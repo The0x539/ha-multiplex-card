@@ -1,16 +1,21 @@
-import { LitElement } from 'lit';
+import { LitElement, CSSResult, HTMLTemplateResult, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('foo-card')
 export class FooCard extends LitElement {
-  render() {
+  override render(): HTMLTemplateResult {
     return html`<p>foo</p>`;
   }
 
-  static get styles() {
+  static override get styles(): CSSResult {
     return css`
       p {
         color: blue;
       }
     `;
   }
+
+  public setConfig(_config: unknown): void {}
 }
+
+console.log('hello');
