@@ -1,0 +1,1 @@
+import './foo-card.ts';
