@@ -3,11 +3,22 @@
 import type { MultiplexCardConfig } from "./config.ts";
 import type { HomeAssistant } from "home-assistant/types";
 import type { LovelaceCard } from "home-assistant/panels/lovelace/types";
+import type { MultiplexEditor } from "./multiplex-editor.ts";
 
 export class MultiplexCard extends HTMLElement {
   private _hass!: HomeAssistant;
   private childCards: Map<string, LovelaceCard> = new Map();
   private entityId?: string;
+
+  public static async getConfigElement(): Promise<MultiplexEditor> {
+    if (!customElements.get('hui-card-picker')) {
+      // force home assistant's code to `await import(picker)`
+      const ctor = customElements.get('hui-vertical-stack-card') as any;
+      await ctor.getConfigElement();
+    }
+
+    return document.createElement('multiplex-card-editor');
+  }
 
   public set hass(hass: HomeAssistant) {
     for (const child of this.childCards.values()) {
@@ -28,7 +39,7 @@ export class MultiplexCard extends HTMLElement {
 
   private currentKey(): string {
     if (!this.entityId) return "";
-    if (!this._hass.states[this.entityId]) return "";
+    if (!this._hass?.states[this.entityId]) return "";
     return this._hass.states[this.entityId].state;
   }
 
