@@ -112,14 +112,14 @@ export class MultiplexEditor extends LitElement {
     this.dispatchEvent(new CustomEvent('config-changed', options));
   }
 
-  private onChildPicked(event: CustomEvent): void {
+  private onChildPicked(event: HASSDomEvent<ConfigChangedEvent<LovelaceCardConfig>>): void {
     event.stopPropagation();
     const key = this.tabNames[this.childIndex];
     this.childConfigs.set(key, event.detail.config);
     this.fireConfigChanged();
   }
 
-  private onChildChanged(event: HASSDomEvent<ConfigChangedEvent>): void {
+  private onChildChanged(event: HASSDomEvent<ConfigChangedEvent<LovelaceCardConfig>>): void {
     event.stopPropagation();
   }
 }
