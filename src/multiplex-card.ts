@@ -1,9 +1,11 @@
-/// <reference path="./helpers.ts" />
+/// <reference path='./helpers.ts' />
 
-import type { MultiplexCardConfig } from "./config.ts";
-import type { HomeAssistant } from "home-assistant/types";
-import type { LovelaceCard } from "home-assistant/panels/lovelace/types";
-import type { MultiplexEditor } from "./multiplex-editor.ts";
+import type { MultiplexCardConfig } from './config.ts';
+import type { MultiplexEditor } from './multiplex-editor.ts';
+
+import type { HomeAssistant } from 'home-assistant/types.ts';
+import type { LovelaceCard } from 'home-assistant/panels/lovelace/types.ts';
+import type { HuiStackCard } from 'home-assistant/panels/lovelace/cards/hui-stack-card.ts';
 
 export class MultiplexCard extends HTMLElement {
   private _hass!: HomeAssistant;
@@ -13,7 +15,7 @@ export class MultiplexCard extends HTMLElement {
   public static async getConfigElement(): Promise<MultiplexEditor> {
     if (!customElements.get('hui-card-picker')) {
       // force home assistant's code to `await import(picker)`
-      const ctor = customElements.get('hui-vertical-stack-card') as any;
+      const ctor = customElements.get('hui-vertical-stack-card') as unknown as typeof HuiStackCard;
       await ctor.getConfigElement();
     }
 

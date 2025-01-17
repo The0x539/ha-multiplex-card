@@ -1,10 +1,11 @@
-/// <reference lib="dom" />
+/// <reference lib='dom' />
 
-import type { LovelaceCardConfig } from 'home-assistant/data/lovelace/config/card';
-import type { LovelaceCard } from "home-assistant/panels/lovelace/types";
-import type { CustomCardEntry } from "home-assistant/data/lovelace_custom_cards";
-import type { MultiplexCard } from "./multiplex-card.ts";
-import type { MultiplexEditor } from "./multiplex-editor.ts";
+import type { MultiplexCard } from './multiplex-card.ts';
+import type { MultiplexEditor } from './multiplex-editor.ts';
+
+import type { LovelaceCardConfig } from 'home-assistant/data/lovelace/config/card.ts';
+import type { LovelaceCard } from 'home-assistant/panels/lovelace/types.ts';
+import type { CustomCardEntry } from 'home-assistant/data/lovelace_custom_cards.ts';
 
 declare global {
   interface Window {

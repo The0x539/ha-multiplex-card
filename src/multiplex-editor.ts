@@ -1,12 +1,15 @@
-/// <reference path="./helpers.ts" />
+/// <reference path='./helpers.ts' />
+
+import type { MultiplexCardConfig } from './config.ts';
 
 import { LitElement, html } from 'lit';
-import { state, property } from 'lit/decorators.js';
-
+import { property, state } from 'lit/decorators.js';
 import type { HTMLTemplateResult } from 'lit';
-import type { HomeAssistant } from 'home-assistant/types';
-import type { MultiplexCardConfig } from "./config.ts";
-import type { LovelaceCardConfig } from "home-assistant/data/lovelace/config/card";
+
+import type { HomeAssistant } from 'home-assistant/types.ts';
+import type { LovelaceCardConfig } from 'home-assistant/data/lovelace/config/card.ts';
+import type { HASSDomEvent } from 'home-assistant/common/dom/fire_event.ts';
+import type { ConfigChangedEvent } from 'home-assistant/panels/lovelace/editor/hui-element-editor.ts'
 
 export class MultiplexEditor extends LitElement {
   @property()
@@ -115,7 +118,7 @@ export class MultiplexEditor extends LitElement {
     this.fireConfigChanged();
   }
 
-  private onChildChanged(event: CustomEvent): void {
+  private onChildChanged(event: HASSDomEvent<ConfigChangedEvent>): void {
     event.stopPropagation();
   }
 }

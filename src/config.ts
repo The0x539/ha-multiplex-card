@@ -1,4 +1,4 @@
-import { LovelaceCardConfig } from "home-assistant/data/lovelace/config/card";
+import { LovelaceCardConfig } from 'home-assistant/data/lovelace/config/card.ts';
 
 export interface MultiplexCardConfig {
   type: string;

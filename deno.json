@@ -1,13 +1,12 @@
 {
   "imports": {
     "lit": "npm:lit",
-    "home-assistant/types": "http://localhost:8000/src/types.ts",
-    "home-assistant/data/lovelace/config/card": "http://localhost:8000/src/data/lovelace/config/card.ts",
-    "home-assistant/panels/lovelace/types": "http://localhost:8000/src/panels/lovelace/types.ts",
-    "home-assistant/data/lovelace_custom_cards": "http://localhost:8000/src/data/lovelace_custom_cards.ts",
+    "home-assistant/": "http://localhost:8000/src/",
     // annoying transitive dependencies of home-assistant modules
     "home-assistant-js-websocket": "npm:home-assistant-js-websocket",
     "memoize-one": "npm:memoize-one",
+    "lit/decorators": "npm:lit/decorators.js",
+    "lit/directives/cache": "npm:lit/directives/cache.js"
   },
   "tasks": {
     "proxy": "deno run --allow-net proxy.ts",

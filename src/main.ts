@@ -1,5 +1,5 @@
 import { MultiplexCard } from './multiplex-card.ts';
-import { MultiplexEditor } from "./multiplex-editor.ts";
+import { MultiplexEditor } from './multiplex-editor.ts';
 
 customElements.define('multiplex-card', MultiplexCard);
 customElements.define('multiplex-card-editor', MultiplexEditor);
