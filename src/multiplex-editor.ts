@@ -68,6 +68,7 @@ export class MultiplexEditor extends LitElement {
       return html`
         <hui-card-element-editor
           .hass=${this.hass}
+          .value=${this.childConfigs.get(childName)}
           .lovelace=${this.lovelace}
           @config-changed=${this.onChildChanged}
         ></hui-card-element-editor>
