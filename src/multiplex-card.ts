@@ -29,7 +29,9 @@ export class MultiplexCard extends HTMLElement {
 
     const oldKey = this.currentKey();
     this._hass = hass;
-    if (this.currentKey() !== oldKey) {
+    // when this is a top-level editor preview,
+    // let the editor tabs control which child is selected
+    if (this.currentKey() !== oldKey && !this.isPreview()) {
       this.selectChild();
     }
   }
@@ -61,12 +63,16 @@ export class MultiplexCard extends HTMLElement {
     this.selectChild();
   }
 
-  private selectChild(): void {
+  public selectChild(key?: string): void {
     this.replaceChildren();
 
-    const child = this.childCards.get(this.currentKey());
+    const child = this.childCards.get(key ?? this.currentKey());
     if (child) {
       this.appendChild(child);
     }
+  }
+
+  private isPreview(): boolean {
+    return this.parentElement?.hasAttribute('preview') ?? false;
   }
 }

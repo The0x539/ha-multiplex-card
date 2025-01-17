@@ -1,6 +1,7 @@
 /// <reference path='./helpers.ts' />
 
 import type { MultiplexCardConfig } from './config.ts';
+import type { MultiplexCard } from './multiplex-card.ts';
 
 import { LitElement, html } from 'lit';
 import { property, state } from 'lit/decorators.js';
@@ -100,6 +101,15 @@ export class MultiplexEditor extends LitElement {
 
   private onTabSelected(event: CustomEvent): void {
     this.childIndex = event.detail.index;
+
+    const preview = document
+      .querySelector('home-assistant')!
+      .shadowRoot!
+      .querySelector('hui-dialog-edit-card')!
+      .shadowRoot!
+      .querySelector('multiplex-card')! as MultiplexCard;
+
+    preview.selectChild(this.tabNames[this.childIndex]);
   }
 
   private fireConfigChanged(): void {
